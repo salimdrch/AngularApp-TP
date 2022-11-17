@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Running component 
+
+Run `ng g c my-component` to create a component ! In this case we create component like this ng g c pages/profil
+
+## Running service
+
+Run `ng g s services/pages` to create a services 
+
+## Running interface
+
+Run `ng g interface modules/PageI` to create a interface
