@@ -37,3 +37,7 @@ Run `ng g s services/pages` to create a services
 ## Running interface
 
 Run `ng g interface modules/PageI` to create a interface
+
+## Running module
+
+Run `ng generate module intranet --routing` to create module intranet

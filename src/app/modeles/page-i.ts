@@ -7,3 +7,8 @@ export interface ProfilI{
     titre:string;
     contenu?: string;
 }
+
+export interface ContenusI{
+    mentions:PageI;
+    profil:ProfilI;
+}
