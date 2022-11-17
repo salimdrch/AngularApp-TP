@@ -3,6 +3,7 @@ export interface AvionI{
     capacite:number;
     autonomie?:number;
     code:string | number;
+    modele:string;
 }
 
 export interface PersonnelI{

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CompagnieService } from '../../services/compagnie.service';
 
 @Component({
   selector: 'app-attributions',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttributionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public compagnies:CompagnieService) { }
 
   ngOnInit(): void {
+    console.log(this.compagnies)
   }
 
 }
