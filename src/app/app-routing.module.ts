@@ -11,8 +11,8 @@ import { ProfilComponent } from './pages/profil/profil.component';
 const routes: Routes = [
   {path: '', component:ConnexionComponent},
   {path: 'mentions', component:MentionsComponent},
-  {path:'**', component:ErreurRouteComponent},
-  {path:'profil',component:ProfilComponent}
+  {path:'profil',component:ProfilComponent},
+  {path:'**', component:ErreurRouteComponent}
 ];
 
 @NgModule({
