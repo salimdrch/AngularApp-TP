@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PageI, ProfilI } from '../modeles/page-i';
 
@@ -16,5 +17,32 @@ export class PagesService {
     titre: "Profil",
     contenu: " Je sappelle GROOT !!!!"
   }
-  constructor() { }
+
+  pages:any = {};
+
+  constructor(private readonly http:HttpClient) { 
+    this.getPage()
+  }
+  
+   
+  getPage(){
+  /*  this.http.get("assets/data/pages.json").subscribe({
+      next(data){
+        console.log('Donnée : ', data);
+      },
+      error(msg){
+        console.log('Error Getting Location : ', msg);
+
+      },
+    }) */
+
+    // get renvoie un observable 
+    this.http.get("assets/data/pages.json").subscribe(p =>{
+      console.log("Donnée retourné depuis le fichier json",p);
+      this.pages = p
+      console.log(p)
+    });
+  }
+  
+
 }
