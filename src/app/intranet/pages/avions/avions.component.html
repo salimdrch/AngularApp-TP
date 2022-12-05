@@ -33,7 +33,7 @@
 </aside>
 <section>
     <h3>Liste des avions disponibles</h3>
-    <form (submit)="updateAvion()" #f="ngForm" *ngIf="avion">
+    <form (submit)="updateAvion(avion.code)" #f="ngForm" *ngIf="avion">
         <input [(ngModel)]="avion.modele" name="modele">
         <input [(ngModel)]="avion.capacite" type="number" name="capacite">
         <input [(ngModel)]="avion.autonomie" type="number" name="autonomie">

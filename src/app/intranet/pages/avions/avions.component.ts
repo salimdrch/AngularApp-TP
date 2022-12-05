@@ -20,9 +20,10 @@ export class AvionsComponent implements OnInit {
     this.avion = this.compagnie_avions.avions.find(av => av.code === code)!;
   }
   /** Mettre à jour notre avion */
-  updateAvion(){
+  updateAvion(id: number | string) {
+    this.compagnie_avions.updateFireAvions(id as string, this.avion);
     console.log("l'avion va être mis a jour ici");
-  }
+  } 
   /** Annuler la selection sur un avion */
   resetAvion(){
     this.avion = <AvionI>{};
