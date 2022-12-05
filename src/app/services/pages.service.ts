@@ -23,6 +23,10 @@ export class PagesService {
   constructor(private readonly http:HttpClient) { 
     this.getPage()
   }
+
+  troqueChaine(){
+    
+  }
   
    
   getPage(){

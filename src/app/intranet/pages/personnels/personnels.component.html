@@ -1,1 +1,24 @@
-<p>personnels works!</p>
+<section>
+    <h3>Liste des Personnels</h3>
+    <article>
+        <table>
+            <thead>
+                <tr>
+                    <td>Type</td>
+                    <td>Capacité</td>
+                    <td>Autonomie</td>
+                    <td>Code</td>
+                    <td>Modèle</td>
+                </tr>
+            </thead>
+            <tr *ngFor="let a of compagnie_personnels.personnels">
+                <td> {{a.nom }}</td>
+                <td *ngFor="let p of a.prenom"> 
+                    {{p}}
+                </td>
+                <td> {{a.habilitation }}</td>
+                
+            </tr>
+        </table>
+    </article>
+</section>

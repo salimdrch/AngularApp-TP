@@ -1,3 +1,23 @@
 <section>
     <h3>Liste des avions</h3>
+    <article>
+        <table>
+            <thead>
+                <tr>
+                    <td>Type</td>
+                    <td>Capacité</td>
+                    <td>Autonomie</td>
+                    <td>Code</td>
+                    <td>Modèle</td>
+                </tr>
+            </thead>
+            <tr *ngFor="let a of compagnie_avions.avions">
+                <td> {{a.type }}</td>
+                <td> {{a.capacite }}</td>
+                <td> {{a.autonomie }}</td>
+                <td> {{a.code}}</td>
+                <td> {{a.modele}}</td>
+            </tr>
+        </table>
+    </article>
 </section>

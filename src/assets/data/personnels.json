@@ -1,0 +1,12 @@
+[
+    {
+        "nom": "Mohamed",
+        "prenom": ["Ali","Salah","Cheikh"],
+        "habilitation": "Copilote"
+    },
+    {
+        "nom": "Karim",
+        "prenom": ["Benzema",  "Tchouameni", "Dembele"],
+        "habilitation": "Pilote"
+    }
+]

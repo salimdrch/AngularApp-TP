@@ -11,12 +11,13 @@ export class AuthGuard implements CanActivate, CanLoad {
   constructor(private u:UService){
 
   }
-
+  // Activer une route
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.u.user.statut == "pate";
   }
+  //Activer le chargement de fichier
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

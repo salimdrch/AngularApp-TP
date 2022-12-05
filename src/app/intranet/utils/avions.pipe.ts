@@ -10,7 +10,7 @@ export class AvionsPipe implements PipeTransform {
     if(!filtre || filtre.length == 0) return vols;
     if(vols.length == 0) return [];
 
-    return vols.filter(v => v.avion.modele.indexOf(filtre) != -1);
+    return vols.filter(v => v.avion.modele.toLowerCase().indexOf(filtre.toLowerCase()) != -1);
   }
-
+  
 }

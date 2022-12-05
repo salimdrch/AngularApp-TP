@@ -9,10 +9,11 @@ import { CompagnieService } from '../../services/compagnie.service';
 })
 export class AvionsComponent implements OnInit {
 
-  constructor(public av:CompagnieService) { }
+  filtreModeleAvions:string = '';
+  constructor(public compagnie_avions:CompagnieService) { }
 
   ngOnInit(): void {
-    console.log(this.av.vols)
+    console.log(this.compagnie_avions.vols)
   }
 
 }

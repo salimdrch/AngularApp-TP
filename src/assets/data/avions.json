@@ -1,0 +1,16 @@
+[
+    {
+        "type": "A-320",
+        "capacite": 150,
+        "autonomie": 20,
+        "code": "A20V62",
+        "modele": "Airbus"
+    },
+    {
+        "type": "B-620",
+        "capacite": 200,
+        "autonomie": 30,
+        "code": "B620V20",
+        "modele": "Boeing"
+    }
+]
