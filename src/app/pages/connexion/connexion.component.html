@@ -1,10 +1,15 @@
 <section>
-    <form>
+    <h2>Se connecter</h2>
+    <h3>Vous devez être connecter pour gérer les vols</h3>
+    <form (submit)="checkId()" #f="ngForm">
         <label>Identifiant</label>
-        <input name="id" placeholder="Saisissez votre id !">
+        <input name="id" [(ngModel)]="id.id" #ctlId="ngModel" required placeholder="Saisissez votre id !">
+        <span *ngIf="ctlId.invalid">Ce champs est requis</span>
         <label>Mot de passe</label>
-        <input name="passe">
-        <input type="submit" value="Connexion">
+        <input name="passe" type="password" #ctlPasse="ngModel" [(ngModel)]="id.passe" required placeholder="Tu as oublié ton mot de passe !">
+        <span *ngIf="ctlPasse.invalid">Ce champs est requis</span>
+        <span *ngIf="f.valid">le formulaire semble correct</span>
+        <input type="submit" value="Connexion" [disabled]="f.invalid">
         <input type="reset" value="Annuler">
     </form>
 </section>

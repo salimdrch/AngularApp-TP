@@ -7,12 +7,13 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { MentionsComponent } from './pages/mentions/mentions.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { ProfilComponent } from './pages/profil/profil.component';
+import { AuthGuard } from './securite/auth.guard';
 
 const routes: Routes = [
   {path: '', component:ConnexionComponent},
   {path: 'mentions', component:MentionsComponent},
   {path:'profil',component:ProfilComponent},
-  {path:'intranet', loadChildren: () => import('./intranet/intranet.module').then(m => m.IntranetModule)},
+  {path:'intranet', loadChildren: () => import('./intranet/intranet.module').then(m => m.IntranetModule), canActivate:[AuthGuard], canLoad:[AuthGuard] },
   {path:'**', component:ErreurRouteComponent}
 ];
 

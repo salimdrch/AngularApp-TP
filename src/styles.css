@@ -48,3 +48,11 @@ form{
     flex-flow: column nowrap;
     justify-content: center;
 }
+
+form > *{
+    margin:5px auto;
+}
+
+input.ng-valid{
+    border-bottom: solid 1px green;
+}

@@ -41,3 +41,7 @@ Run `ng g interface modules/PageI` to create a interface
 ## Running module
 
 Run `ng generate module intranet --routing` to create module intranet
+
+## Running security
+
+Run `ng g guard securite/auth` to secure our file -> choose CanActivate & CanLoad -> file chargement
