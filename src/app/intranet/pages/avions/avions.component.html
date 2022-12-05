@@ -1,4 +1,5 @@
-<section>
+
+<!-- <section>
     <h3>Liste des avions</h3>
     <article>
         <table>
@@ -11,7 +12,7 @@
                     <td>Modèle</td>
                 </tr>
             </thead>
-            <tr *ngFor="let a of compagnie_avions.avions">
+            <tr *ngFor="let a of compagnie_avions.avions" (click)="selectAvion(av.code)">
                 <td> {{a.type }}</td>
                 <td> {{a.capacite }}</td>
                 <td> {{a.autonomie }}</td>
@@ -20,4 +21,24 @@
             </tr>
         </table>
     </article>
+</section>
+-->
+<aside>
+    <h2>Liste des avions</h2>
+    <ul>
+        <li *ngFor="let av of compagnie_avions.avions"(click)="selectAvion(av.code)" >
+            {{av.modele}}
+        </li>
+    </ul>
+</aside>
+<section>
+    <h3>Liste des avions disponibles</h3>
+    <form (submit)="updateAvion()" #f="ngForm" *ngIf="avion">
+        <input [(ngModel)]="avion.modele" name="modele">
+        <input [(ngModel)]="avion.capacite" type="number" name="capacite">
+        <input [(ngModel)]="avion.autonomie" type="number" name="autonomie">
+        <input [(ngModel)]="avion.code" name="code">
+        <input type="reset" value="Annuler" (click)="resetAvion()">
+        <input type="submit" value="Valider">
+    </form>
 </section>

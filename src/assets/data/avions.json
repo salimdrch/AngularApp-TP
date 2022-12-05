@@ -3,14 +3,14 @@
         "type": "A-320",
         "capacite": 150,
         "autonomie": 20,
-        "code": "A20V62",
-        "modele": "Airbus"
+        "code": "A-320-22-11-18",
+        "modele": "A-320"
     },
     {
-        "type": "B-620",
+        "type": "B-747",
         "capacite": 200,
         "autonomie": 30,
-        "code": "B620V20",
-        "modele": "Boeing"
+        "code": "b-747-22-11-18",
+        "modele": "Boeing 747"
     }
 ]

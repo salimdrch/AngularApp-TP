@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "prendtonvol-c25d2": {
+      "hosting": {
+        "myApplication": [
+          "prendtonvol-c25d2"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "prendtonvol-c25d2"
+  }
+}

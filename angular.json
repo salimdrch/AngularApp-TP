@@ -94,6 +94,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "myApplication:build:production",
+            "firebaseProject": "prendtonvol-c25d2",
+            "firebaseHostingSite": "prendtonvol-c25d2"
+          }
         }
       }
     }
