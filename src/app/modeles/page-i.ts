@@ -5,6 +5,8 @@ export interface PageI {
 }
 export interface ProfilI{
     titre:string;
+    prenom:string;
+    status:string;
     contenu?: string;
 }
 

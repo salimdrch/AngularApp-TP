@@ -4,20 +4,35 @@
         <table>
             <thead>
                 <tr>
-                    <td>Type</td>
-                    <td>Capacité</td>
-                    <td>Autonomie</td>
-                    <td>Code</td>
-                    <td>Modèle</td>
+                    <td>Nom</td>
+                    <td>Prénom</td>
+                    <td>Habilitation</td>
                 </tr>
             </thead>
             <tr *ngFor="let a of compagnie_personnels.personnels">
-                <td> {{a.nom }}</td>
-                <td *ngFor="let p of a.prenom"> 
-                    {{p}}
-                </td>
-                <td> {{a.habilitation }}</td>
-                
+                <td> {{a.data.nom }}</td>
+                <td> {{a.data.prenom.join()}}</td>
+                <td> {{a.data.habilitation }}</td>
+            </tr>
+        </table>
+    </article>
+</section>
+
+<section>
+    <h3>Donnée synchronisées depuis le BehaviorSubject</h3>
+    <article>
+        <table>
+            <thead>
+                <tr>
+                    <td>Nom</td>
+                    <td>Prénom</td>
+                    <td>Habilitation</td>
+                </tr>
+            </thead>
+            <tr *ngFor="let a of compagnie_personnels.personnels$ | async">
+                <td> {{a.data.nom }}</td>
+                <td> {{a.data.prenom.join()}}</td>
+                <td> {{a.data.habilitation }}</td>
             </tr>
         </table>
     </article>

@@ -6,6 +6,8 @@ export interface IdI {
 export interface UserI {
     uid: string | number;
     nom: string;
-    prenoms:Array<string>;
+    prenoms:string;
+    tel: number;
+    photoURL: string;
     statut?:string;
 }

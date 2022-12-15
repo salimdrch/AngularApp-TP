@@ -1,8 +1,27 @@
 <section>
     <h1>
-        {{pp.pages.profil.titre}}
+       <!-- {{pp.pages.profil.titre}} -->
+       Mon profil {{auth.currentUser?.uid}} 
     </h1>
     <article>
-        {{pp.pages.profil.contenu}}
+        <!--{{pp.pages.profil.contenu}} -->
     </article>
+    <article>
+        <form (submit)="update()" #f="ngForm">
+            <h2>Utilisateur {{uServ.user.nom}} {{ uServ.user.prenoms }} </h2>
+            <label>Nom</label>
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.nom" name="nom" required placeholder="Saisissez votre nom !">
+            <label>Prénom</label>
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.prenoms" name="prenom" required placeholder="Saisissez votre prenom !">
+            <label>Tel</label>
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.tel" name="tel" required placeholder="Saisissez votre tel !">
+            <label>PhotoURL</label>
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.photoURL" name="photoURL" required placeholder="Saisissez votre photoURL !">
+            <label>Statut</label>
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.statut" name="statut" required placeholder="Saisissez votre statut !">
+            <input type="submit" value="Connexion" [disabled]="f.invalid">
+            <input type="reset" value="Annuler">
+        </form>
+    </article>
+
 </section>

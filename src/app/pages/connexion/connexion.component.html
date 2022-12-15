@@ -1,7 +1,7 @@
 <section>
     <h2>Se connecter</h2>
     <h3>Vous devez être connecter pour gérer les vols</h3>
-    <form (submit)="checkId()" #f="ngForm">
+    <form (submit)="checkIdFirebase()" #f="ngForm">
         <label>Identifiant</label>
         <input name="id" [(ngModel)]="id.id" #ctlId="ngModel" required placeholder="Saisissez votre id !">
         <span *ngIf="ctlId.invalid">Ce champs est requis</span>

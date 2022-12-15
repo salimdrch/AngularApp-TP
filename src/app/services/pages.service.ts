@@ -15,10 +15,11 @@ export class PagesService {
 
   };
 
+  /*
   profil:ProfilI = {
     titre: "Profil",
     contenu: " Je sappelle GROOT !!!!"
-  }
+  }*/
 
   constructor(private readonly http:HttpClient) { 
     this.getPage()
@@ -27,6 +28,8 @@ export class PagesService {
   troqueChaine(){
     
   }
+
+
   
    
   getPage(){

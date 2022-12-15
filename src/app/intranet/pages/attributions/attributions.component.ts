@@ -10,10 +10,12 @@ export class AttributionsComponent implements OnInit {
 
   // paramtre pour filtre
   filtreModele:string = '';
+  filtreM:string = '';
   constructor(public compagnies:CompagnieService) { }
 
   ngOnInit(): void {
-    console.log(this.compagnies)
+    this.compagnies.getFireVols();
+    console.log("personnel dans le vol", this.compagnies.vols);
   }
 
 }

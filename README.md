@@ -45,3 +45,19 @@ Run `ng generate module intranet --routing` to create module intranet
 ## Running security
 
 Run `ng g guard securite/auth` to secure our file -> choose CanActivate & CanLoad -> file chargement
+
+## Running firebase
+
+Run `ng add @angular/fire` you need to install and configure firebase
+
+## Running firebase
+
+Run `firebase login` after you need `firebase init`
+
+## Deploy application
+
+Run `ng g deploy` to deploy your application
+
+# Running service authentication
+
+Run `ng g s services/auth`

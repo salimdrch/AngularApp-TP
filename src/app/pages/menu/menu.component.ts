@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import { UService } from 'src/app/services/u.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UService } from 'src/app/services/u.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public u:UService) { }
+  constructor(public u:UService, public auth:Auth) { }
 
   ngOnInit(): void {
   }
