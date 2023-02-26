@@ -1,0 +1,73 @@
+<section>
+    <div class="box-main">
+
+        <!-- Display User Profile  -->
+        <!-- =============================================================== -->
+        <div id="updateProfile" class="row">
+        <!-- Update Other information -->
+            <div class="col-md-8 user-right">
+                <h2>User<span>Form</span></h2>
+            </div>
+        </div>
+
+        <!-- Get User data -->
+        <!-- =============================================================== -->
+        <form id="newProfile"  #f="ngForm">
+            <h1 id="header">Add USER</h1>
+            
+            
+            <!-- USER NOM -->
+            <div class="float-label">
+                <input [(ngModel)]="user.nom" name="nom" required placeholder="Name">
+            </div>
+            <br>
+
+            <!-- USER PRENOM -->
+            <div class="float-label">
+                <input [(ngModel)]="user.prenoms" name="prenom" required placeholder="Firstname">
+            </div>
+            <br>
+
+            <!-- USER TEL -->
+            <div class="float-label">
+                <input [(ngModel)]="user.tel" name="tel" placeholder="PhoneNumber">
+            </div>
+            <br>
+
+            <!-- USER PHOTOURL -->
+            <div class="float-label">
+                <input [(ngModel)]="user.photoURL" name="photoURL" placeholder="photoURL">
+            </div>
+            <br>
+
+            <!-- USER MAIL -->
+            <div class="float-label">
+                <input [(ngModel)]="userId.mail" name="mail" required placeholder="mail">
+            </div>
+            <br>
+
+            <!-- USER PASSWORD -->
+            <div class="float-label">
+                <input type="password" [(ngModel)]="userId.password" name="password" required placeholder="password">
+            </div>
+            <br>
+
+            <!-- USER STATUT -->
+            <div class="float-label">
+                <select class="select-habilitation" name="statut" #ctlId="ngModel" [(ngModel)]="user.statut" required placeholder="Statut">
+                    <option selected hidden value="">Statut</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+            <br>
+    
+            <button (click)="createUser()" name="add" id="sendData" [disabled]="f.invalid">Add</button>        
+        </form>
+    </div>
+</section>
+
+
+
+
+

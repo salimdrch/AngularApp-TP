@@ -1,13 +1,13 @@
 export interface IdI {
-    id: string | number;
-    passe: string | number;
+    mail: string;
+    password: string ;
 }
 
 export interface UserI {
     uid: string | number;
     nom: string;
-    prenoms:string;
-    tel: number;
-    photoURL: string;
-    statut?:string;
+    prenoms?:string;
+    tel?: string | number;
+    photoURL?: string;
+    statut: "user" | "admin";
 }

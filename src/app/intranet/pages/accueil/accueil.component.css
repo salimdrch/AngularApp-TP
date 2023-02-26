@@ -9,7 +9,8 @@ aside{
 }
 
 :host > section{
-    width: 90vw;
+    margin: 5%;
+    width: 90%;
 }
 aside > nav {
     display: flex;

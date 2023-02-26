@@ -46,8 +46,9 @@ export class PagesService {
     // get renvoie un observable 
     this.http.get<ContenusI>("assets/data/pages.json").subscribe(p =>{
       console.log("Donnée retourné depuis le fichier json",p);
-      this.pages = p
-      console.log(p)
+      this.pages.mentions = p.mentions
+      this.pages.profil = p.profil
+      console.log("mentions **",p)
     });
   }
   

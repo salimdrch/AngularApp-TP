@@ -11,7 +11,6 @@ export class MentionsComponent implements OnInit {
   constructor( public pm:PagesService) { }
 
   ngOnInit(): void {
-    console.log(this.pm.mentions)
   }
 
 }

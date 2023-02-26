@@ -1,10 +1,105 @@
 <section>
+    <div class="box-main">
+
+        <!-- Display User Profile  -->
+        <!-- =============================================================== -->
+        <div id="updateProfile" class="row">
+            <!-- Update Name -->
+            <div class="col-md-4 user-left">
+            <span><img [src]="uServ.user.photoURL" alt="user image" class="user-image" id="updateImage"></span>
+            <h1 id="updateName"> {{uServ.user.nom}} {{ uServ.user.prenoms }} </h1>
+            </div>
+        <!-- Update Other information -->
+            <div class="col-md-8 user-right">
+                <h2>Profile <span>Info</span></h2>
+                <div class="user-info">
+                    <table>
+                        <!--<tr>
+                            <td><p>Uid : {{uServ.user.uid}}</p></td>
+                        </tr>-->
+                        <tr>
+                            <td><p>Name : {{uServ.user.nom}}</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>FirstName : {{uServ.user.prenoms}} </p></td>
+                        </tr>
+                        <tr>
+                            <td><p>PhoneNumber : {{uServ.user.tel}} </p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Statut : {{uServ.user.statut}} </p></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <!-- Get User data -->
+        <!-- =============================================================== -->
+        <form id="newProfile" (submit)="update()" #f="ngForm">
+        <h1 id="header">Update Your Profile</h1>
+        <h1></h1>
+        <!-- USER NAME -->
+        <div class="float-label">
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.nom" name="nom" id="userName" required placeholder="Name">
+        </div>
+        <br>
+
+        <!-- USER FIRSTNAME -->
+        <div class="float-label">
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.prenoms" id="userName" name="prenom" required placeholder="Firstname">
+        </div>
+        <br>
+
+        <!-- USER TEL -->
+        <div class="float-label">
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.tel" name="tel" required placeholder="Phone number">
+        </div>
+        <br>
+
+        <!-- USER PICTURE -->
+        <div class="float-label">
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.photoURL" name="photoURL" required placeholder="Picture URL">
+        </div>
+        <br>
+
+        <!-- USER STATUT --
+        <div class="float-label">
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.statut" name="statut" required placeholder="Statut">
+        </div>
+        <br> -->
+
+        <!-- EMAIL ADDRESS 
+        <div class="float-label">
+            <input type="text" name="f-name" value="" id="userEmail" placeholder="email address">
+        </div>
+        <br>-->
+
+        <button type="submit" name="button" id="sendData" [disabled]="f.invalid">Update</button>
+        <button type="reset" name="button" id="sendData" [disabled]="f.invalid">Reset</button>
+
+        </form>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!--
+
+<section>
     <h1>
-       <!-- {{pp.pages.profil.titre}} -->
+       <!-- {{pp.pages.profil.titre}} 
        Mon profil {{auth.currentUser?.uid}} 
     </h1>
     <article>
-        <!--{{pp.pages.profil.contenu}} -->
+        <!--{{pp.pages.profil.contenu}} 
     </article>
     <article>
         <form (submit)="update()" #f="ngForm">
@@ -25,3 +120,4 @@
     </article>
 
 </section>
+-->

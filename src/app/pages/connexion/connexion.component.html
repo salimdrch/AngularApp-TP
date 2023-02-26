@@ -1,3 +1,22 @@
+
+<section>
+    <div class="login-page">
+        <div class="form">
+            <h1>Login</h1>
+            <form class="login-form" (submit)="checkIdFirebase()" #f="ngForm" >
+                <span class="message" *ngIf="ctlId.invalid"><p>This field is required</p></span>
+                <input type="text" name="id" [(ngModel)]="id.mail" #ctlId="ngModel" required placeholder="username"/>
+                <span class="message" *ngIf="ctlPasse.invalid"><p>This field is required</p></span>
+                <input type="password" name="passe" type="password" #ctlPasse="ngModel" [(ngModel)]="id.password" required placeholder="password"/>
+                <button type="submit">login</button>
+                <button type="reset">reset</button>
+                <!--<p class="message">Not registered? <a href="#">Create an account</a></p>-->
+            </form>
+        </div>
+    </div>
+</section>
+
+<!--
 <section>
     <h2>Se connecter</h2>
     <h3>Vous devez être connecter pour gérer les vols</h3>
@@ -13,3 +32,4 @@
         <input type="reset" value="Annuler">
     </form>
 </section>
+-->

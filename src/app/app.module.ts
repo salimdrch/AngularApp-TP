@@ -28,7 +28,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     FooterComponent,
     MentionsComponent,
     ErreurRouteComponent,
-    ProfilComponent
+    ProfilComponent,
   ],
   imports: [
     BrowserModule,

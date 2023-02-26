@@ -9,20 +9,20 @@ import { UService } from '../services/u.service';
 })
 export class AuthGuard implements CanActivate, CanLoad {
 
-  constructor(private u:UService, private auth:Auth){
+  constructor(private userService:UService, private auth:Auth){
 
   }
   // Activer une route
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.u.user.statut == "pate" || this.auth.currentUser ? true : false;
+    return this.userService.user.statut == "admin" || this.auth.currentUser ? true : false;
   }
   //Activer le chargement de fichier
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.u.user.statut == "pate" || this.auth.currentUser ? true : false;
+    return this.userService.user.statut == "admin" || this.auth.currentUser ? true : false;
     ;
   }
 }

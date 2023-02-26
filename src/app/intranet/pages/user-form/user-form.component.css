@@ -172,7 +172,7 @@
     color: black;
   }
   .float-label select:first-child{
-    width: 30%;
+    width: 80%;
   }
   .birthday .select {
     width: 82%;
@@ -224,61 +224,11 @@
   ========================================================*/
   /*Add margin to profile*/
   #updateProfile {
-    padding: 20px 60px;
-  }
-  
-  .user-left {
-    padding-top: 40px;
-  }
-  
-   /*create a round container to hide overflow image*/
-  .user-left span {
-    display: inline-block;
-    width: 250px;
-    height: 250px;
-    overflow: hidden;
-    text-align: center;
-    border-radius: 100%;
-    /*add shadow and border*/
-    border: 2px solid #a9a9a9;
-    cursor: pointer;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    -webkit-transition: background-color 0.3s ease;
-    transition: background-color 0.3s ease;
-    box-shadow: 0px 20px 25px -10px rgba(0, 0, 0, 0.3);
-  }
-  
-  /*change image effect when hover*/
-  .user-left span:hover{
-    border-color: #b3b3b3;
-    box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.3);
-    transform: translateY(-1px);
-  }
-  
-  /*change font margin and padding*/
-  .user-left h1 {
-    padding-top: 0;
-  }
-  
-  /*center image and make it round*/
-  .user-image {
-    left: 50%;
-    margin-left: -100%;
-    position: relative;
-    width: auto !important;
-    height: 250px !important;
-  }
-  
-  /*change image opacity*/
-  .user-image:hover {
-    opacity: 0.5;
-    filter: alpha(opacity=50);
+    padding: 0px 60px;
   }
   
   .user-right {
     padding: 20px 20px 40px;
-    min-height: 200px;
     /*margin-left: 80px;*/
   }
   
@@ -292,28 +242,9 @@
   .user-right span {
     color: #d2d2d2;
   }
-  
-  .user-info {
-    padding: 18px;
-    width: 100%;
-    min-height: 200px;
-    border-radius: 3px;
-    box-shadow: 0 0 0 0 transparent;
-    box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(210, 214, 213, 0.5);
-    background-color: transparent;
-  
-    box-shadow: 0px 2px 2px 2px rgba(210, 214, 213, 0.4);
-  }
+
   
   
-  td p{
-    font-size: 20px;
-    padding: 10px 15px 10px 10px;
-    text-align: left;
-  }
-  
-  #signOut {
-    float: right;
-  }
+
   
   

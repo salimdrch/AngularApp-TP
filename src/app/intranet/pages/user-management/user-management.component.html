@@ -1,0 +1,77 @@
+<section>
+    <h1><span class="blue">&lt;</span>User Management<span class="blue">&gt;</span></h1>
+        <h2>Created by me</h2>
+
+        <div class="box">
+            <i class="fa-brands fa-searching"></i>
+            <input placeholder="Search" name="filtre" >
+        </div>
+        
+        <table class="container">
+            <thead>
+                <tr>
+                    <th><h1>UID</h1></th>
+                    <th><h1>Name</h1></th>
+                    <th><h1>Firstname</h1></th>
+                    <th><h1>PhoneNumber</h1></th>
+                    <th><h1>statut</h1></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of userService.users " (click)="selectUser(u.uid)"  >
+                    <td data-label="Account">{{u.uid}}</td>
+                    <td data-label="Due Date">{{u.nom}}</td>
+                    <td data-label="Amount">{{u.prenoms}}</td>
+                    <td data-label="Amount">{{u.tel}}</td>
+                    <td data-label="Amount">{{u.statut}}</td>
+                </tr> 
+            </tbody>
+        </table>
+
+        <!---->
+        <div class="box-main">
+
+            <!-- Get PERSONALS data -->
+            <!-- =============================================================== -->
+            <form id="newProfile" #f="ngForm" *ngIf="user">
+                <h1 id="header">Personals Form</h1>
+    
+                <!-- PERSONAL NOM -->
+                <div class="float-label">
+                    <input [(ngModel)]="user.nom" name="nom" required placeholder="Name">
+                </div>
+                <br>
+    
+                <!-- PERSONAL PRENOM -->
+                <div class="float-label">
+                    <input [(ngModel)]="user.prenoms" name="prenom" required placeholder="Firstname">
+                </div>
+                <br>
+
+                <!-- PERSONAL PRENOM -->
+                <div class="float-label">
+                    <input [(ngModel)]="user.tel" name="tel" required placeholder="PhoneNumber">
+                </div>
+                <br>
+
+                <!-- PERSONAL PRENOM -->
+                <div class="float-label">
+                    <input [(ngModel)]="user.photoURL" name="photoURL" placeholder="photoURL">
+                </div>
+                <br>
+    
+                <!-- PERSONAL HABILITATION -->
+                <div class="float-label">
+                    <select class="select-habilitation" name="statut" #ctlId="ngModel" [(ngModel)]="user.statut" required>
+                        <option selected hidden value="">Statut</option>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+                </div>
+                <br>
+                
+                <button name="update" (click)="updateUser(user.uid)" id="sendData" [disabled]="f.invalid">Update</button>
+            </form>
+        </div>
+
+</section>

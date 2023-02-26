@@ -1,5 +1,18 @@
+<section>
+    <div class="footer-basic">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a routerLink="/" href *ngIf="!authService.auth.currentUser">Login</a></li>
+            <li class="list-inline-item"><a routerLink="/" href *ngIf="authService.auth.currentUser" (click)="authService.logout()">Logout</a></li>
+            <li class="list-inline-item"><a routerLink="/mentions" href >Mentions Legal</a></li>
+        </ul>
+        <p class="copyright">Company Name © 2023</p>
+    </div>
+</section>
+
+<!--
 <nav>
     <a routerLink="/" href *ngIf="!auth.currentUser">Se connecter</a>
     <a routerLink="/" href *ngIf="auth.currentUser" (click)="u.deconnexion()">Se deconnecter</a>
     <a routerLink="/mentions" href >Mentions Legal</a>
 </nav>
+-->

@@ -1,4 +1,118 @@
 <section>
+    <h1><span class="blue">&lt;</span>Attributions Page<span class="blue">&gt;</span></h1>
+        <h2>Created by me</h2>
+
+        <div class="box">
+            <i class="fa-brands fa-searching"></i>
+            <input [(ngModel)]="filtreModeleAttribution" placeholder="Search" name="filtre" >
+        </div>
+
+
+        <table class="container">
+            <thead>
+                <tr>
+                    <th><h1>Code</h1></th>
+                    <th><h1>Avion Modèle</h1></th>
+                    <th><h1>Date</h1></th>
+                    <th><h1>Personnels</h1></th>
+                    <th><h1>AeroportDepart</h1></th>
+                    <th><h1>AeroportArrivee</h1></th>
+                    <th><h1>Duree</h1></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let v of compagnieService.vols | avions:filtreModeleAttribution"  (click)="selectVols(v.id)" >
+                    <td data-label="Account">{{v.data.code}}</td>
+                    <td data-label="Due Date">{{v.data.avion}}</td>
+                    <td data-label="Amount">{{v.data.date}}</td>
+                    <td data-label="Amount">
+                        <ul *ngFor="let p of v.data.personnel">
+                            <li>{{p.nom}}, {{p.prenom}} | {{p.habilitation}}</li>
+                        </ul>
+                    </td>
+                    <td data-label="Amount">{{v.data.aeroportDepart.name}}</td>
+                    <td data-label="Amount">{{v.data.aeroportArrivee.name}}</td>
+                    <td data-label="Amount">{{v.data.duree}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- --
+        <div class="box-main">
+
+            <!-- Get PERSONALS data --
+            <!-- =============================================================== --
+            <form id="newProfile" #f="ngForm" *ngIf="vol.data">
+                <h1 id="header">Attributions Form</h1>
+    
+                <!-- VOLS CODE --
+                <div class="float-label">
+                    <input [(ngModel)]="vol.data.code" name="code" required placeholder="Code">
+                </div>
+                <br>
+    
+                <!-- VOLS AVION --
+                <div class="float-label">
+                    <input [(ngModel)]="vol.data.avion" name="avion" required placeholder="Avion">
+                </div>
+                <br>
+    
+                <!-- VOLS DATE --
+                <div class="float-label">
+                    <input [(ngModel)]="vol.data.date" name="date" required placeholder="Date">
+                </div>
+                <br>
+    
+                <!-- VOLS AEROPORTD --
+                <div class="float-label">
+                    <input [(ngModel)]="vol.data.aeroportDepart.name" name="aeroportDepart" required placeholder="AeroportDepart">
+                </div>
+                <br>
+    
+                <!-- VOLS AEROPORTA --
+                <div class="float-label">
+                    <input [(ngModel)]="vol.data.aeroportArrivee.name" name="aeroportArrivee" required placeholder="AeroportArrivee">
+                </div>
+                <br>
+    
+                <!-- VOLS DUREE --
+                <div class="float-label">
+                    <input [(ngModel)]="vol.data.duree" name="duree" required placeholder="Duree">
+                </div>
+                <br>
+
+    
+                <!-- VOLS HABILITATION --
+                <div class="float-label">
+                    <select class="select-habilitation" name="personnels" #ctlId="ngModel" [(ngModel)]="vol.data.personnel" required>
+                        <option selected hidden value="">Personnels</option>
+                        <option  *ngFor="let p of vol.data.personnel" value="{{p.nom}}">{{p.nom}}</option>
+                    </select>
+                </div>
+                <br>
+                
+
+                <button (click)="addVols(vol.id)" name="add" id="sendData" [disabled]="f.invalid">Add</button>
+                <button (click)="updateVols(vol.id)" name="update" id="sendData" [disabled]="f.invalid">Update</button> 
+                <button (click)="deleteVols(vol.id)" name="delete" id="sendData" [disabled]="f.invalid">Delete</button>
+                <button (click)="resetVols()" type="reset" name="reset" id="sendData" [disabled]="f.invalid">Reset</button>
+            --
+            </form> 
+        </div> -->  
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- --
+
+<section>
     <h3>Liste des vols dont le personnel doit être attribuer</h3>
     <article>
         <input [(ngModel)]="filtreModele" name="filtre" >
@@ -14,7 +128,7 @@
                     <td>Personnels avec Attribution</td>
                 </tr>
             </thead>
-            <tr *ngFor="let v of compagnies.vol | avions:filtreModele">
+            <tr *ngFor="let v of compagnieService.vol | avions:filtreModele">
                 <td> {{v.code }}</td>
                 <td> {{v.avion.modele }}</td>
                 <td> {{v.date }}</td>
@@ -30,8 +144,8 @@
         </table>
     </article>
 </section>
-
-<section>
+<!--
+    <section>
     <h3>Liste des vols dont le personnel doit être attribuer à partir de Firebase</h3>
     <article>
         <input [(ngModel)]="filtreM" name="filtre" >
@@ -52,10 +166,17 @@
                 <td> {{v.data.avion }}</td>
                 <td> {{v.data.date }}</td>
                 <td> {{v.data.duree }}</td>
-                <td> {{v.data.aeroportDepart }}</td>
-                <td> {{v.data.aeroportArrivee }}</td>
-                <td> {{v.data.personnel[0].habilitation}}</td>
+                <td> {{v.data.aeroportDepart.name}}</td>
+                <td> {{v.data.aeroportArrivee.name }}</td>
+                <td> 
+                    <ul>
+                        <li *ngFor="let p of v.data.personnel">
+                            {{p.nom}}, {{p.prenom[0]}} | {{p.habilitation}} 
+                        </li>
+                    </ul>
+                </td>
             </tr>
         </table>
     </article>
 </section>
+-->

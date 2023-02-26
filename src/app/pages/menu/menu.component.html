@@ -1,4 +1,57 @@
+<ng-container *ngIf="authService.userService.user.statut == 'user'; else second">
+    <section class="header" *ngIf="authService.userService.user.statut == 'user'">
+        <a href="" routerLink="/intranet" class="logo">PTE</a>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+            <li><a routerLink="/profil">Profil</a></li>
+            <li><a routerLink="/intranet">Intranet</a>
+                <ul>
+                    <li><a href routerLink="/intranet" title="Retrournerà l'accueil de l'intranet">Attributions</a></li>
+                    <li><a href routerLink="/intranet/avions" title="Administrer les avions">Airplanes</a></li>
+                    <li><a href routerLink="/intranet/personnels" title="Voir ou editer un personnel">Personals</a></li>
+                </ul>
+            </li>
+            <li><a routerLink="/" href *ngIf="authService.auth.currentUser" (click)="authService.logout()">Log out</a></li>
+        </ul>
+    </section>
+</ng-container>
+<ng-template #second>
+    <section class="header" *ngIf="authService.userService.user.statut == 'admin'">
+        <a href="" routerLink="/intranet" class="logo">PTE</a>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+            <li><a routerLink="/profil">Profil</a></li>
+            <li><a routerLink="/intranet">Intranet</a>
+                <ul>
+                    <li><a href routerLink="/intranet" title="Retrournerà l'accueil de l'intranet">Attributions</a></li>
+                    <li><a href routerLink="/intranet/avions" title="Administrer les avions">Airplanes</a></li>
+                    <li><a href routerLink="/intranet/personnels" title="Voir ou editer un personnel">Personals</a></li>
+                </ul>
+            </li>
+            <li><a routerLink="/intranet/userManagement">UserManagement</a>
+                <ul>
+                    <li><a routerLink="/intranet/userManagement" href *ngIf="authService.userService.user.statut === 'admin' ">UserManagement</a>
+                    <li><a routerLink="/intranet/userForm" href *ngIf="authService.userService.user.statut === 'admin' ">AddUser</a></li>
+                </ul>
+            </li>
+            
+            <li><a routerLink="/" href *ngIf="authService.auth.currentUser" (click)="authService.logout()">Log out</a></li>
+        </ul>
+    </section>
+</ng-template>
+
+
+  
+
+
+
+
+  
+<!-- 
 <nav *ngIf="u.user.statut || auth.currentUser">
-    <a routerLink="/profil">Mon profil</a>
-    <a routerLink="/intranet">intranet</a>
+    <a routerLink="/profil">Profil</a>
+    <a routerLink="/intranet">Intranet</a>
 </nav>
+ -->
