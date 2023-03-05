@@ -13,25 +13,11 @@ export class AuthService {
   constructor(public readonly auth:Auth, private readonly route:Router, public userService:UService) { }
 
 
-  /**
-   * TODO:faire le guard ! faire la page userManagement !  
-   *  */ 
-
+  /** Fonction de connexion */
   login(mail: string, mdp: string){
     signInWithEmailAndPassword(this.auth, mail, mdp)
     .then(a => {      
       this.userService.getFireUser(this.auth.currentUser?.uid as string).then(user => {
-        console.log("USER", this.userService.user)
-        /*switch (this.userService.user.statut){
-          case 'user':
-            console.log("c'est un USER");
-            this.route.navigateByUrl('/intranet');
-            break;
-          case 'admin':
-            console.log("c'est un ADMIN");
-            this.route.navigateByUrl('/intranet/userManagement');
-            break;
-        }*/
         this.route.navigateByUrl('/intranet');
       })
       
@@ -39,6 +25,7 @@ export class AuthService {
     .catch(err => console.log(err));
   }
 
+  /** Fonction de deconnexion */
   logout(){
     this.userService.user = <UserI>{};
     this.auth.signOut();

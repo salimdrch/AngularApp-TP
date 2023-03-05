@@ -23,16 +23,9 @@ export class AvionsComponent implements OnInit {
     this.avion = this.compagnie_avions.avions.find(av => av.code === code)!;
   }
 
-  codeInListAvion(code:string | number): boolean {
-    let val: boolean = false;
-    this.compagnie_avions.avions.forEach( element => code == element.code ? val = true : console.log("not in array", element))
-    return val;
-  }
-
   addAvion(code:string | number){
-    let val = this.codeInListAvion(code);
+    let val = this.compagnie_avions.idInList(code,"avions");
     if(val){
-      console.log("L'avion existe déjà : ", code);
       alert("L'avion existe déjà !")
     }else{
       this.compagnie_avions.addFireAvions(code as string, this.avion)
@@ -41,26 +34,21 @@ export class AvionsComponent implements OnInit {
 
   /** Mettre à jour notre avion */
   updateAvion(code: number | string) {
-    let val = this.codeInListAvion(code);
+    let val = this.compagnie_avions.idInList(code, "avions");
     if(val){
       this.compagnie_avions.updateFireAvions(code as string, this.avion);
-      console.log("l'avion va être mis a jour");
     }else{
       alert("L'avion à modifier n'existe pas ")
-      console.log("L'avion à modifier n'existe pas : ", code);
     }
-    
   }
 
   /** Supprimer l'avion selectionner */
   deleteAvion(code: string | number) {
-    let val = this.codeInListAvion(code);
+    let val = this.compagnie_avions.idInList(code, "avions");
     if(val){
       this.compagnie_avions.delFireAvions(code as string);
-      console.log("l'avion a été supprimé");
     }else{
       alert("L'avion sélectionné n'existe pas")
-      console.log("L'avion sélectionné n'existe pas");
     }
   }
 

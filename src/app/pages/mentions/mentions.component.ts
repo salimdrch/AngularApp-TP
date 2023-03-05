@@ -8,9 +8,10 @@ import { PagesService } from 'src/app/services/pages.service';
 })
 export class MentionsComponent implements OnInit {
 
-  constructor( public pm:PagesService) { }
+  constructor( public pageSevices:PagesService) { }
 
   ngOnInit(): void {
+    this.pageSevices.getPage();
   }
 
 }

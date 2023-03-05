@@ -6,7 +6,7 @@ export interface IdI {
 export interface UserI {
     uid: string | number;
     nom: string;
-    prenoms?:string;
+    prenom?:string;
     tel?: string | number;
     photoURL?: string;
     statut: "user" | "admin";

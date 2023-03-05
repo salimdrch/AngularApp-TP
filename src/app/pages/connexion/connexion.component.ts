@@ -19,9 +19,6 @@ export class ConnexionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logId(){    
-    console.log(this.id);
-  }
   /**
    * Identifies the user by json fils
    */

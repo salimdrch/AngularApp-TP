@@ -53,12 +53,10 @@ export class UserServiceService {
         const user = userCredential.user;
         new_user.uid = user.uid;
         this.addFireUser(new_user);
-        console.log('USER CREATED',user);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('ErrorCode : ', errorCode, ', ' ,errorMessage);
+
+        console.log('Error : ', error);
       });
   }
 
@@ -84,7 +82,6 @@ export class UserServiceService {
     await setDoc(docUser, user, { merge: true })
       .then((r) => {
         alert("L'utilisateur a été crée")
-        console.log("L'utilisateur à été crée")
       })
       .catch((err) => {
         console.log("L'utilisateur n'a été crée")
@@ -97,7 +94,6 @@ export class UserServiceService {
     await setDoc(docUser, data, { merge: true })
       .then((r) => {
         alert("L'utilisateur a été mis à jour")
-        console.log("L'utilisateur à été mis à jour")
       })
       .catch((err) => {
         console.log("L'utilisateur n'a été mis à jour")
@@ -109,7 +105,6 @@ export class UserServiceService {
     await deleteDoc(docUser)
       .then((r) => {
         alert("L'utilisateur a été supprimé")
-        console.log("L'utilisateur à été supprimé")
       })
       .catch((err) => {
         console.log("L'utilisateur n'a été supprimé")

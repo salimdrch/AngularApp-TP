@@ -16,25 +16,34 @@ export class UserManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getFireUser();
-    console.log('TEST', this.userService.users)
     this.userId = <IdI>{};
   }
 
   selectUser(uid: string | number): void {
     this.user = this.userService.users.find(user => user.uid === uid)!;
-    console.log('USER SELECTED', this.user)
   }
 
-  updateUser(uid: string | number): void {
+  updateUser(uid: string | number): void {    
     if(this.userService.idInListUsers(uid)){
-      console.log("User updated",this.user.uid);
       this.userService.updateFireUser(this.user)
     }else{
-      console.log("Not in the list");
       alert("User already not exists");
     }
   }
   
-  
+  deleteUser(uid: string | number): void {
+    if(this.userService.idInListUsers(uid)){
+      alert("User are deletes successfully in database but not in Auth ! GO to firebase to delete them");
+      console.log("User are deletes successfully in database but not in Auth ! GO to firebase to delete them");
+      this.userService.delFireUser(this.user.uid as string)
+    }else{
+      alert("User already not exists");
+    }
+  }
+
+  resetUser() {
+    this.user = <UserI>{};
+    this.userId = <IdI>{};
+  }
 
 }

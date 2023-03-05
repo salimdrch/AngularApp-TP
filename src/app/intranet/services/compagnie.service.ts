@@ -18,7 +18,6 @@ export class CompagnieService {
   vol: Array<VolI> = [];
   personnels: Array<{ id: string, data: PersonnelI }> = [];
   vols: Array<{ id: string, data: VolI }> = [];
-  //listePersonnelsById:Array<PersonnelI> = [];
   //listePersonnels!:Array<{id: string, data: PersonnelI}>;
   //listeAvions!:Array<{id: string, data: AvionI}>;
 
@@ -27,11 +26,7 @@ export class CompagnieService {
   vols$: BehaviorSubject<Array<{ id: string, data: VolI }>> = new BehaviorSubject(<Array<{ id: string, data: VolI }>>[]);
 
   constructor(private readonly http: HttpClient, private bdd: Firestore) {
-    this.getVols();
-    //this.getAvions();
     this.getAeroports();
-    //this.getPersonnels();
-    //this.getFirePersonnels();
   }
 
   /** 
@@ -79,6 +74,25 @@ export class CompagnieService {
     }
   }
 
+  /**
+   * Vérification des si les ID suivantes existent dans les données 
+   */
+  idInList(id: string | number, pages: string): boolean {
+    let tmp: boolean = false; 
+    switch(pages) {
+      case "personnels":
+        this.personnels.forEach( element => id == element.id ? tmp = true : console.log("not in array", element));
+        break;
+        case "avions":
+        this.avions.forEach( element => id == element.code ? tmp = true : console.log("not in array", element));
+        break;
+        case "vols":
+          this.vols.forEach( element => id == element.id ? tmp = true : console.log("not in array", element))
+          break;
+    }
+    return tmp;
+  }
+
   /** 
   * Récupération des données dans la Firebase
   **/
@@ -110,18 +124,7 @@ export class CompagnieService {
       .catch(err => console.log("Erreur", err));
   }
 
-  /** Recuperer un avion à partir de son code */
-  async getFireAvions(code: string) {
-    const docAvion = doc(this.bdd, "avions", code);
-    await getDoc(docAvion);
-    return docAvion
-  }
 
-  /** Récuperer un personnel à partir de son id */
-  async getPersonnelVols(id: string) {
-    const docPersonnel = doc(this.bdd, "personnels", id);
-    return await getDoc(docPersonnel);
-  }
 
   /** Recuperer une collection de vols */
   async getFireVols() {
@@ -166,7 +169,6 @@ export class CompagnieService {
       .then((r) => {
         this.getFireAvs()
         alert("L'avion a été supprimé")
-        console.log("L'avion à été supprimé")
       })
       .catch((err) => {
         console.log("L'avion n'a été supprimé")
@@ -179,7 +181,6 @@ export class CompagnieService {
     await setDoc(docAvion, data, { merge: true })
       .then((r) => {
         alert("L'avion a été mis à jour")
-        console.log("L'avion à été mis à jour")
       })
       .catch((err) => {
         console.log("L'avion n'a été mis à jour")
@@ -193,7 +194,6 @@ export class CompagnieService {
       .then((r) => {
         this.getFireAvs()
         alert("L'avion a été crée")
-        console.log("L'avion à été crée")
       })
       .catch((err) => {
         console.log("L'avion n'a été crée")
@@ -212,7 +212,6 @@ export class CompagnieService {
       .then((r) => {
         this.getFirePersonnels()
         alert("Le personnel a été crée")
-        console.log("Le personnel à été crée")
       })
       .catch((err) => {
         console.log("Le personnel n'a été crée")
@@ -225,7 +224,6 @@ export class CompagnieService {
     await setDoc(docPersonnel, data, { merge: true })
       .then((r) => {
         alert("L'avion a été mis à jour")
-        console.log("L'avion à été mis à jour")
       })
       .catch((err) => {
         console.log("L'avion n'a été mis à jour")
@@ -239,7 +237,6 @@ export class CompagnieService {
       .then((r) => {
         this.getFirePersonnels()
         alert("Le personnel a été supprimé")
-        console.log("Le personnel à été supprimé")
       })
       .catch((err) => {
         console.log("Le personnel n'a été supprimé")
@@ -258,7 +255,6 @@ export class CompagnieService {
       .then((r) => {
         this.getFireVols()
         alert("Le vol a été crée")
-        console.log("Le vol à été crée")
       })
       .catch((err) => {
         console.log("Le vol n'a été crée")
@@ -271,7 +267,6 @@ export class CompagnieService {
     await setDoc(docVol, data, { merge: true })
       .then((r) => {
         alert("Le vol a été mis à jour")
-        console.log("Le vol à été mis à jour")
       })
       .catch((err) => {
         console.log("Le vol n'a été mis à jour")
@@ -285,7 +280,6 @@ export class CompagnieService {
       .then((r) => {
         this.getFireVols()
         alert("Le vol a été supprimé")
-        console.log("Le vol à été supprimé")
       })
       .catch((err) => {
         console.log("Le vol n'a été supprimé")

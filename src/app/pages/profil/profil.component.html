@@ -7,7 +7,7 @@
             <!-- Update Name -->
             <div class="col-md-4 user-left">
             <span><img [src]="uServ.user.photoURL" alt="user image" class="user-image" id="updateImage"></span>
-            <h1 id="updateName"> {{uServ.user.nom}} {{ uServ.user.prenoms }} </h1>
+            <h1 id="updateName"> {{uServ.user.nom}} {{ uServ.user.prenom }} </h1>
             </div>
         <!-- Update Other information -->
             <div class="col-md-8 user-right">
@@ -21,7 +21,7 @@
                             <td><p>Name : {{uServ.user.nom}}</p></td>
                         </tr>
                         <tr>
-                            <td><p>FirstName : {{uServ.user.prenoms}} </p></td>
+                            <td><p>FirstName : {{uServ.user.prenom}} </p></td>
                         </tr>
                         <tr>
                             <td><p>PhoneNumber : {{uServ.user.tel}} </p></td>
@@ -48,7 +48,7 @@
 
         <!-- USER FIRSTNAME -->
         <div class="float-label">
-            <input #ctlId="ngModel" [(ngModel)]="uServ.user.prenoms" id="userName" name="prenom" required placeholder="Firstname">
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.prenom" id="userName" name="prenom" required placeholder="Firstname">
         </div>
         <br>
 
@@ -103,11 +103,11 @@
     </article>
     <article>
         <form (submit)="update()" #f="ngForm">
-            <h2>Utilisateur {{uServ.user.nom}} {{ uServ.user.prenoms }} </h2>
+            <h2>Utilisateur {{uServ.user.nom}} {{ uServ.user.prenom }} </h2>
             <label>Nom</label>
             <input #ctlId="ngModel" [(ngModel)]="uServ.user.nom" name="nom" required placeholder="Saisissez votre nom !">
             <label>Prénom</label>
-            <input #ctlId="ngModel" [(ngModel)]="uServ.user.prenoms" name="prenom" required placeholder="Saisissez votre prenom !">
+            <input #ctlId="ngModel" [(ngModel)]="uServ.user.prenom" name="prenom" required placeholder="Saisissez votre prenom !">
             <label>Tel</label>
             <input #ctlId="ngModel" [(ngModel)]="uServ.user.tel" name="tel" required placeholder="Saisissez votre tel !">
             <label>PhotoURL</label>

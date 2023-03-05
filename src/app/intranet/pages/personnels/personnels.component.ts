@@ -29,9 +29,9 @@ export class PersonnelsComponent implements OnInit, OnDestroy {
     this.compagnieService.getFirePersonnels();
     this.personnel.data = this.pers;
     
-    /*
+    /* Voici des exemples vu en cours 
+
     // Connexion à l'écouteur de l'observable
-    console.log(this.compagnieService.personnels$);
     this.subs = this.compagnieService.personnels$.subscribe(
       {
         next: (personnel) => {
@@ -51,16 +51,11 @@ export class PersonnelsComponent implements OnInit, OnDestroy {
 
   }
 
-  codeInList(code:string | number): boolean {
-    let val: boolean = false;
-    this.compagnieService.personnels.forEach( element => code == element.id ? val = true : console.log("not in array", element))
-    return val;
-  }
+  
 /* Ajouter un personnel dans la db */
   addPersonnel(id:string | number){
-    let val = this.codeInList(id);
+    let val = this.compagnieService.idInList(id, "personnels");
     if(val){
-      console.log("Le personnel existe déjà : ", id);
       alert("Le personnel existe déjà !")
     }else{
       id = this.personnel.data.nom + "-" + this.personnel.data.prenom;
@@ -68,28 +63,24 @@ export class PersonnelsComponent implements OnInit, OnDestroy {
     }
   }
 
-  /** Mettre à jour notre avion */
+  /** Mettre à jour notre personnel */
   updatePersonnel(code: number | string) {
-    let val = this.codeInList(code);
+    let val = this.compagnieService.idInList(code, "personnels");
     if(val){
       this.compagnieService.updateFirePersonnel(code as string, this.personnel.data);
-      console.log("le personnel va être mis a jour");
     }else{
       alert("Le personnel à modifier n'existe pas ")
-      console.log("Le vol à modifier n'existe pas : ", code);
     }
     
   }  
 
-  /** Supprimer le vol selectionner */
+  /** Supprimer le personnel selectionner */
   deletePersonnel(id: string | number) {
-    let val = this.codeInList(id);
+    let val = this.compagnieService.idInList(id, "personnels");
     if(val){
       this.compagnieService.delFirePersonnel(id as string);
-      console.log("le personnel a été supprimé");
     }else{
       alert("Le personnel sélectionné n'existe pas")
-      console.log("Le personnel sélectionné n'existe pas");
     }
   }
 

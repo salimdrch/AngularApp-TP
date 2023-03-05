@@ -20,7 +20,6 @@ export class UserFormComponent implements OnInit {
 
   createUser(): void {
     if (this.userService.idInListUsers(this.user.uid)){
-      console.log("In the list");
       alert("User already exists");
     }else{
       this.userService.createAuthUser(this.user, this.userId);
