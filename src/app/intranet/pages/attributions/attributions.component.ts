@@ -8,10 +8,10 @@ import { CompagnieService } from '../../services/compagnie.service';
   styleUrls: ['./attributions.component.css']
 })
 export class AttributionsComponent implements OnInit {
+
   vol :{id: string, data: VolI} = <{id: string, data: VolI}>{};
 
   // paramtre pour filtre
-  filtreModele:string = '';
   filtreModeleAttribution:string = '';
   
   constructor(public compagnieService: CompagnieService) { }
@@ -35,7 +35,7 @@ export class AttributionsComponent implements OnInit {
 
   /* Ajouter un Vols dans la db */
   addVols(id:string | number){
-    let val = this.compagnieService.idInList(id, "vols");
+    let val = this.compagnieService.idInList(id);
     if(val){
       alert("Le vol existe déjà !")
     }else{
@@ -45,7 +45,7 @@ export class AttributionsComponent implements OnInit {
 
   /** Mettre à jour notre vol */
   updateVols(code: number | string) {
-    let val = this.compagnieService.idInList(code, "vols");
+    let val = this.compagnieService.idInList(code);
     if(val){
       this.compagnieService.updateFireVols(code as string, this.vol.data);
     }else{
@@ -55,7 +55,7 @@ export class AttributionsComponent implements OnInit {
 
   /** Supprimer le vol selectionner */
   deleteVols(id: string | number) {
-    let val = this.compagnieService.idInList(id, "vols");
+    let val = this.compagnieService.idInList(id);
     if(val){
       this.compagnieService.delFireVols(id as string);
     }else{

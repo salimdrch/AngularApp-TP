@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let av of compagnie_avions.avions | modele:filtreModeleAvions" (click)="selectAvion(av.code)" >
+            <tr *ngFor="let av of avionsService.avions | modele:filtreModeleAvions" (click)="selectAvion(av.code)" >
                 <td data-label="Account">{{av.modele}}</td>
                 <td data-label="Due Date">{{av.code}}</td>
                 <td data-label="Amount">{{av.capacite}}</td>

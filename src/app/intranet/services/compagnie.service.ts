@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Firestore, collection, getDocs, doc, getDoc, deleteDoc, setDoc } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
-import { AeroportI, AvionI, PersonnelI, VolI } from '../modeles/companie-i';
+import { AeroportI, PersonnelI, VolI } from '../modeles/companie-i';
+import { PersonnelsService } from './personnels.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +14,14 @@ export class CompagnieService {
    * Déclaration des variables
    */
 
-  avions: Array<AvionI> = [];
   aeroports: Array<AeroportI> = [];
   vol: Array<VolI> = [];
-  personnels: Array<{ id: string, data: PersonnelI }> = [];
   vols: Array<{ id: string, data: VolI }> = [];
-  //listePersonnels!:Array<{id: string, data: PersonnelI}>;
-  //listeAvions!:Array<{id: string, data: AvionI}>;
 
   // Example with BehaviorSubject
-  personnels$: BehaviorSubject<Array<{ id: string, data: PersonnelI }>> = new BehaviorSubject(<Array<{ id: string, data: PersonnelI }>>[]);
   vols$: BehaviorSubject<Array<{ id: string, data: VolI }>> = new BehaviorSubject(<Array<{ id: string, data: VolI }>>[]);
 
-  constructor(private readonly http: HttpClient, private bdd: Firestore) {
+  constructor(private readonly http: HttpClient, private bdd: Firestore, private personalService: PersonnelsService) {
     this.getAeroports();
   }
 
@@ -39,15 +35,6 @@ export class CompagnieService {
     })
   }
 
-  /** 
- * Récupération des données de avions à partir d'un json
- **/
-
-  getAvions() {
-    this.http.get<Array<AvionI>>("assets/data/avions.json").subscribe(a => {
-      this.avions = a
-    });
-  }
 
   /** 
   * Récupération des données de aeroports à partir d'un json
@@ -77,19 +64,9 @@ export class CompagnieService {
   /**
    * Vérification des si les ID suivantes existent dans les données 
    */
-  idInList(id: string | number, pages: string): boolean {
+  idInList(id: string | number): boolean {
     let tmp: boolean = false; 
-    switch(pages) {
-      case "personnels":
-        this.personnels.forEach( element => id == element.id ? tmp = true : console.log("not in array", element));
-        break;
-        case "avions":
-        this.avions.forEach( element => id == element.code ? tmp = true : console.log("not in array", element));
-        break;
-        case "vols":
-          this.vols.forEach( element => id == element.id ? tmp = true : console.log("not in array", element))
-          break;
-    }
+    this.vols.forEach( element => id == element.id ? tmp = true : console.log("not in array", element))
     return tmp;
   }
 
@@ -97,39 +74,10 @@ export class CompagnieService {
   * Récupération des données dans la Firebase
   **/
 
-  /** Requete pour récupérer une collection */
-  async getFireAvs() {
-    this.avions = [];
-    await getDocs(collection(this.bdd, 'avions'))
-      .then(av => {
-        av.forEach(a => {
-          //this.listeAvions.push({id:a.id, data:a.data() as AvionI}); 
-          this.avions.push(a.data() as AvionI);
-        })
-      })
-      .catch(erreur => console.log("Erreur", erreur));
-  }
-
-  /** Requete pour récupérer une collection de personnell à partir de la firebase */
-  async getFirePersonnels() {
-    this.personnels = []; // reinitialized array list 
-    await getDocs(collection(this.bdd, 'personnels'))
-      .then((per) => {
-        per.forEach(p => {
-          //this.listePersonnels.push({id: p.id, data: p.data() as PersonnelI});
-          this.personnels.push({ id: p.id, data: p.data() as PersonnelI });
-        })
-        this.personnels$.next(this.personnels);
-      })
-      .catch(err => console.log("Erreur", err));
-  }
-
-
-
   /** Recuperer une collection de vols */
   async getFireVols() {
     this.vols = []; // reinitialized array list 
-    this.getFirePersonnels(); // recuperer la list des personnels 
+    this.personalService.getFirePersonnels(); // recuperer la list des personnels 
     await getDocs(collection(this.bdd, 'vols'))
       .then((vol) => {
         vol.forEach(v => {
@@ -139,7 +87,7 @@ export class CompagnieService {
 
           // on récupere la liste de personnels p
           v.data()["personnel"].forEach((el: any) => {
-            let r: any = this.personnels.find(({ id }) => id == el)            
+            let r: any = this.personalService.personnels.find(({ id }) => id == el)            
             listPersonnel.push(r.data);
           });
 
@@ -155,92 +103,6 @@ export class CompagnieService {
         this.vols$.next(this.vols);
       })
       .catch(err => console.log("Erreur", err));;
-  }
-
-
-  /***
-   * function CREATE, UPDATE, DELETE AIRPLANE
-   */
-
-  /** delete un avion à partir de son code */
-  async delFireAvions(code: string) {
-    const docAvion = doc(this.bdd, "avions", code);
-    await deleteDoc(docAvion)
-      .then((r) => {
-        this.getFireAvs()
-        alert("L'avion a été supprimé")
-      })
-      .catch((err) => {
-        console.log("L'avion n'a été supprimé")
-      });
-  }
-
-  /** Recuperer un avion à partir de son code */
-  async updateFireAvions(code: string, data: AvionI) {
-    const docAvion = doc(this.bdd, "avions", code);
-    await setDoc(docAvion, data, { merge: true })
-      .then((r) => {
-        alert("L'avion a été mis à jour")
-      })
-      .catch((err) => {
-        console.log("L'avion n'a été mis à jour")
-      });
-  }
-
-  async addFireAvions(code: string, data: AvionI) {
-    const docAvion = doc(this.bdd, 'avions', code);
-    // Créer ou mettre à jour l'avion
-    await setDoc(docAvion, data, { merge: true })
-      .then((r) => {
-        this.getFireAvs()
-        alert("L'avion a été crée")
-      })
-      .catch((err) => {
-        console.log("L'avion n'a été crée")
-      });
-  }
-
-
-  /***
- * function CREATE, UPDATE, DELETE PERSONAL
- */
-
-   async addFirePersonnel(id: string, data: PersonnelI) {
-    const docPersonnel = doc(this.bdd, 'personnels', id);
-    // Créer ou mettre à jour le personnel
-    await setDoc(docPersonnel, data, { merge: true })
-      .then((r) => {
-        this.getFirePersonnels()
-        alert("Le personnel a été crée")
-      })
-      .catch((err) => {
-        console.log("Le personnel n'a été crée")
-      });
-  }
-
-  /** Recuperer un personnel à partir de son id */
-  async updateFirePersonnel(id: string, data: PersonnelI) {
-    const docPersonnel = doc(this.bdd, "personnels", id);
-    await setDoc(docPersonnel, data, { merge: true })
-      .then((r) => {
-        alert("L'avion a été mis à jour")
-      })
-      .catch((err) => {
-        console.log("L'avion n'a été mis à jour")
-      });
-  }
-
-  /** delete un personnel à partir de son id */
-  async delFirePersonnel(id: string) {
-    const docPersonnel = doc(this.bdd, "personnels", id);
-    await deleteDoc(docPersonnel)
-      .then((r) => {
-        this.getFirePersonnels()
-        alert("Le personnel a été supprimé")
-      })
-      .catch((err) => {
-        console.log("Le personnel n'a été supprimé")
-      });
   }
 
 

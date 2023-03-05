@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let p of compagnieService.personnels | personnel:filtreModelePersonnels" (click)="selectPersonnel(p.id)" >
+                <tr *ngFor="let p of personnalService.personnels | personnel:filtreModelePersonnels" (click)="selectPersonnel(p.id)" >
                     <td data-label="Account">{{p.data.nom}}</td>
                     <td data-label="Due Date">{{p.data.prenom}}</td>
                     <td data-label="Amount">{{p.data.habilitation}}</td>

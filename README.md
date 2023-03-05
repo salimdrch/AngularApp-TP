@@ -2,10 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
 
-# ID Connections
+# ADMIN ID Connections
 
 Mail : pipo@pipo.org
 Password : Pipo123
+
+# USER ID Connections
+
+Mail : popo@popo.org
+Password : Popo123
+
 
 ## Development server
 
@@ -37,7 +43,7 @@ Run `ng g c my-component` to create a component ! In this case we create compone
 
 ## Running service
 
-Run `ng g s services/pages` to create a services 
+Run `ng g s intranet/services/avions` to create a services 
 
 ## Running interface
 
